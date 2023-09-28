@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Text, View } from "react-native";
+import {  View } from "react-native";
 import ActionSheet, { SheetProps } from "react-native-actions-sheet";
 import { theme } from "../../theme";
 
@@ -15,7 +15,7 @@ export function ActionSheetComponent(props: SheetProps<ActionSheetProps>) {
       id={props.sheetId} 
       headerAlwaysVisible={true} 
       useBottomSafeAreaPadding
-      containerStyle={{backgroundColor: theme.colors.purple2[900]}}
+      containerStyle={{backgroundColor: theme.colors.background.primary}}
       >
       <View style={{
           paddingHorizontal: theme.padding.container,
