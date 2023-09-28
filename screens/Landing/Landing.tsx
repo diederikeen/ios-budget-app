@@ -35,6 +35,7 @@ export function LandingScreen({ navigation }) {
 
   const { user } = useAuth();
 
+
   if (user) {
     navigation.navigate('root')
   }

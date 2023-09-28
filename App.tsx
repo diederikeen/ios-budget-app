@@ -13,6 +13,7 @@ import { useFonts } from 'expo-font';
 import { AddTransactionScreen } from './screens/AddTransaction/AddTransaction';
 import "./sheets";
 import { RootNavigator } from './screens/RootNavigator/RootNavigator';
+import { CategoriesScreen } from './screens/Categories/Categories';
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,14 @@ export default function App() {
                 }}
                 name="root"
                 component={RootNavigator}
+              />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                  gestureEnabled: false,
+                }}
+                name="Categories"
+                component={CategoriesScreen}
               />
               <Stack.Screen
                 options={{

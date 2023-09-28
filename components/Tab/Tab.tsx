@@ -10,14 +10,14 @@ interface Props {
 }
 export enum TabType {
   Home = 'Home',
-  AddTransaction = 'AddTransaction',
+  Categories = 'Categories',
 }
 
 export function Tab({ label, type, isFocused }: Props) {
   return (
     <View style={styles.container}>
       {type === TabType.Home ? <TabContent label={label} icon="home" isFocused={isFocused}/> : null}
-      {type === TabType.AddTransaction ? <TabContent label={label} icon="user" isFocused={isFocused}/> : null}
+      {type === TabType.Categories ? <TabContent label={label} icon="pie-chart" isFocused={isFocused}/> : null}
     </View>
   )
 }

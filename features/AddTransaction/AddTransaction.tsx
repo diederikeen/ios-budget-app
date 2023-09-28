@@ -49,14 +49,13 @@ async function createTransaction({amount, note, category}: TransactionProps) {
         'Content-Type': 'application/json'
       }
     });
-    console.log(res);
     return res;
   } catch (error) {
     throw new Error(JSON.stringify(error));
   }
 };
 
-export function AddTransactionFeature(props) {
+export function AddTransactionFeature() {
   const [amount, setAmount] = useState<string | null>(null);
   const [note, setNote] = useState<null | string>(null);
   const [selectedCategory, setSelectedCategory] = useState<null | number>(null);

@@ -6,6 +6,7 @@ import { TextComponent } from "../../components/TextComponent/TextComponent";
 import { Tab, TabType } from "../../components/Tab/Tab";
 import { AddTransactionScreen } from "../AddTransaction/AddTransaction";
 import { theme } from "../../theme";
+import { CategoriesScreen } from "../Categories/Categories";
 
 
 const NavigationTab = createBottomTabNavigator()
@@ -39,12 +40,12 @@ export function RootNavigator(props) {
                 />
               )
             }
-            if (route.name === 'AddTransaction') {
+            if (route.name === 'Categories') {
               return (
                 <Tab 
-                  label="Account"
+                  label="Categories"
                   isFocused={focused}
-                  type={TabType.AddTransaction}
+                  type={TabType.Categories}
                 />
               )
             }
@@ -55,6 +56,16 @@ export function RootNavigator(props) {
           name="Home"
           options={screenOptions}
           component={HomeScreen}
+          listeners={{
+            tabPress: e => {
+              handlePress();
+            },
+          }}
+        />
+        <NavigationTab.Screen
+          name="Categories"
+          options={screenOptions}
+          component={CategoriesScreen}
           listeners={{
             tabPress: e => {
               handlePress();

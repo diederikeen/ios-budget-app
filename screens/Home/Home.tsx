@@ -1,36 +1,23 @@
-import { StyleSheet, View } from "react-native";
-import { Button, Text } from 'react-native-elements';
+import { StyleSheet } from "react-native";
+import { Button } from 'react-native-elements';
 import React from 'react';
 import axios from 'axios';
 import { theme } from "../../theme";
 import { DefaultLayout } from "../../layouts/DefaultLayout/DefaultLayout";
 import { useQuery } from "@tanstack/react-query";
-import z from 'zod';
 import { FlexContainer } from "../../components/FlexContainer/FlexContainer";
 import { Overview } from "./components/Overview/Overview";
 import { TextComponent } from "../../components/TextComponent/TextComponent";
 import { SheetManager } from "react-native-actions-sheet";
-import { AddTransactionScreen } from "../AddTransaction/AddTransaction";
 import { AddTransactionFeature } from "../../features/AddTransaction/AddTransaction";
+import { transactionSchema } from "../../utils/schemas";
+import { API_URL } from '@env';
 
-const transactionSchema = z.array(
-  z.object({
-    id: z.number(),
-    amount: z.number(),
-    note: z.string().optional(),
-    created_at: z.string(),
-    category: z.object({
-      name: z.string(),
-      id: z.number(),
-      icon_name: z.string(),
-    })
-  })
-)
-
-export type Transactions = z.infer<typeof transactionSchema>
 
 async function fetchTransactions() {
-  const res = await axios.get(`${process.env.API_URL}/transactions`);
+  const res = await axios.get(`${API_URL}/transactions`);
+    
+  console.log({res});
 
   try {
     return transactionSchema.parse(res.data)
@@ -41,9 +28,10 @@ async function fetchTransactions() {
 }
 
 export function HomeScreen(props) {
-  const { data, isLoading } = useQuery({
+  console.log(`${API_URL}/transactions`);
+  const { data, isLoading, error } = useQuery({
     queryKey: ['transactions'],
-    queryFn: fetchTransactions,
+    queryFn: async () => await fetchTransactions(),
   });
 
   return (
@@ -53,9 +41,10 @@ export function HomeScreen(props) {
         title:props.route.name,
       }}
     >
+
       {!isLoading && data?.length > 0  ? (
         <Overview data={data} />
-      ) : null}
+      ) : <TextComponent content="Something went wrong"/>}
 
       <FlexContainer style={styles.container}>
         <Button 

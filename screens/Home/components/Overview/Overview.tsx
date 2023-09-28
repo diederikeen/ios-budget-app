@@ -1,12 +1,12 @@
 import { ListItem, Button } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { theme } from '../../../../theme';
-import { Transactions } from '../../Home';
 import { TextComponent } from '../../../../components/TextComponent/TextComponent';
 import { FlexContainer } from '../../../../components/FlexContainer/FlexContainer';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { Transactions } from '../../../../utils/schemas';
 
 function deleteTransaction(id: number) {
   try {
