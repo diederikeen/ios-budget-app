@@ -30,7 +30,7 @@ const transactionSchema = z.array(
 export type Transactions = z.infer<typeof transactionSchema>
 
 async function fetchTransactions() {
-  const res = await axios.get('http://localhost:8000/transactions') 
+  const res = await axios.get(`${process.env.API_URL}/transactions`);
 
   try {
     return transactionSchema.parse(res.data)
