@@ -11,6 +11,7 @@ import { Overview } from "./components/Overview/Overview";
 import { TextComponent } from "../../components/TextComponent/TextComponent";
 import { SheetManager } from "react-native-actions-sheet";
 import { AddTransactionScreen } from "../AddTransaction/AddTransaction";
+import { AddTransactionFeature } from "../../features/AddTransaction/AddTransaction";
 
 const transactionSchema = z.array(
   z.object({
@@ -69,7 +70,7 @@ export function HomeScreen(props) {
           style={styles.floatingButton}
           onPress={() => SheetManager.show('AddTransactionSheet', {
             payload: {
-              children: <AddTransactionScreen/> 
+              children: <AddTransactionFeature /> 
             }
           })}
         />

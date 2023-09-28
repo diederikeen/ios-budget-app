@@ -61,16 +61,6 @@ export function RootNavigator(props) {
             },
           }}
         />
-        <NavigationTab.Screen
-          name="AddTransaction"
-          options={screenOptions}
-          component={AddTransactionScreen}
-          listeners={{
-            tabPress: e => {
-              handlePress();
-            },
-          }}
-        />
       </NavigationTab.Navigator>
   )
 }

@@ -68,14 +68,6 @@ export default function App() {
                 name="Home"
                 component={HomeScreen}
               />
-              <Stack.Screen
-                options={{
-                  headerShown: false,
-                  gestureEnabled: true,
-                }}
-                name="Add transaction"
-                component={AddTransactionScreen}
-              />
             </Stack.Navigator>
             <StatusBar/>
           </SheetProvider>
